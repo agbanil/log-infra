@@ -13,7 +13,7 @@ what do we have here?
 - [Improvements](#Improvements)
 
 ## Infrastructure
-The infrastructure was built using Terraform for IAC. Points considered when designing this setup were, production readiness, scalability and maintainability. This setup spins up a kubernetes cluster on AWS EKS along with zones, vpc, etc., necessary to work with the cluster. The folder structure is as follows:
+The infrastructure was built using Terraform for IAC. Points considered when designing this setup were, production readiness, scalability and maintainability. This setup spins up a kubernetes cluster on AWS EKS along with zones, vpc, etc., necessary to work with the cluster. Although this infrastructure is meant to house the log analyzer application (which is a daemonset), I took the liberty to setup other components necessary for it to house applications that would also need to be accessed from outside the cluster. The folder structure is as follows:
 ```
 log-infra
 ├── modules
@@ -72,4 +72,4 @@ The infrastructure's pipeline would have the following steps:
 
 ## Improvements
 - Having a pipeline for the infrastructure
-- Move the nginx ingress step to an actual terraform helm step (like external dns)
+- Move the nginx ingress step to an actual terraform helm step (like the way external dns is at the moment)
